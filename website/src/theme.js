@@ -3,7 +3,8 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   typography: {
     fontFamily: ["Public Sans", "serif"].join(","),
-    fontFamilyHeader: ["Quicksand", "sans-serif"].join(",")
+    fontFamilyHeader: ["Quicksand", "sans-serif"].join(","),
+    fontSize: 16,
   },
   palette: {
     primary: {
@@ -12,8 +13,18 @@ const theme = createTheme({
     },
     secondary: {
       main: "#E50000",
+      contrastText: "#E57373",
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+  }
 });
 
 export default theme;

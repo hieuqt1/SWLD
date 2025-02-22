@@ -9,7 +9,10 @@ function App({ children }) {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      {children}
+      <div style={{ padding: 20 }}>
+        {children}
+
+      </div>
     </ThemeProvider>
   );
 }
