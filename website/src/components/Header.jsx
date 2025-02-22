@@ -37,15 +37,19 @@ export default function Header() {
               <Button
                 startIcon={
                   <Avatar
-                    src={"src/assets/logo.png"}
+                    src={"src/assets/team-logo.png"}
                     sx={{ width: 40, height: 40 }}
                   />
                 }
-                color="inherit"
+                sx={{ color: "primary.contrastText" }}
                 disableRipple
                 href={"/"}
               >
-                <Typography fontFamily="fontFamilyHeader" fontSize={20} fontWeight={500}>
+                <Typography
+                  fontFamily="fontFamilyHeader"
+                  fontSize={20}
+                  fontWeight={500}
+                >
                   {name.toUpperCase()}
                 </Typography>
               </Button>
@@ -60,7 +64,7 @@ export default function Header() {
                       color:
                         activePath === page.href
                           ? "secondary.main"
-                          : "#FFFFFFDE",
+                          : "primary.light",
                       "&:hover": {
                         color: "primary.contrastText",
                       },
@@ -76,11 +80,15 @@ export default function Header() {
             <>
               <IconButton disableRipple>
                 <Avatar
-                  src={"src/assets/logo.png"}
+                  src={"src/assets/team-logo.png"}
                   sx={{ width: 40, height: 40 }}
                 />
               </IconButton>
-              <Typography fontFamily="fontFamilyHeader" fontSize={20} fontWeight={500}>
+              <Typography
+                fontFamily="fontFamilyHeader"
+                fontSize={20}
+                fontWeight={500}
+              >
                 {name.toUpperCase()}
               </Typography>
               <MenuIcon />
