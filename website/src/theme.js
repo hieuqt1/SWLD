@@ -9,11 +9,12 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#000000",
+      light: "#FFFFFFDE",
       contrastText: "#FFFFFF",
     },
     secondary: {
+      dark: "B20000",
       main: "#E50000",
-      contrastText: "#E57373",
     },
   },
   components: {
@@ -24,7 +25,7 @@ const theme = createTheme({
         },
       },
     },
-  }
+  },
 });
 
 export default theme;
