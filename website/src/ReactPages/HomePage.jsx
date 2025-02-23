@@ -63,8 +63,8 @@ export default function HomePage() {
         >
           <Box
             sx={{
-              width: 500,
-              height: 500,
+              width: collapsedView ? 500 : 400,
+              height: collapsedView ? 500 : 400,
               borderRadius: "10px",
               overflow: "hidden",
             }}
