@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Button, ThemeProvider } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageCarousel from "../components/ImageCarousel";
@@ -8,6 +8,13 @@ import sample from "../assets/sample.mp4";
 export default function HomePage() {
   const collapsedView = useMediaQuery("(min-width:600px)");
   const [videoEnded, setVideoEnded] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
+
+  useEffect(() => {
+    if (videoEnded) {
+      setContentVisible(true);
+    }
+  }, [videoEnded]);
 
   const images = [
     {
@@ -51,7 +58,7 @@ export default function HomePage() {
             position: "absolute",
             top: 0,
             left: 0,
-            zIndex: 5,
+            zIndex: !videoEnded ? 100000 : 0,
           }}
         >
           <video
@@ -68,9 +75,67 @@ export default function HomePage() {
             }}
             onEnded={() => setVideoEnded(true)}
           />
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              textAlign: "center",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2rem",
+              "& h1": {
+                color: 'primary.contrastText',
+                fontSize: '5rem',
+                position: 'absolute',
+                opacity: 0,
+              },
+              "& h1:nth-of-type(1)": {
+                animation: "popUpFadeOut 0.5s ease-in-out forwards",
+                animationDelay: "0.5s",
+              },
+              "& h1:nth-of-type(2)": {
+                animation: "popUpFadeOut 0.5s ease-in-out forwards",
+                animationDelay: "1s",
+              },
+              "& h1:nth-of-type(3)": {
+                animation: "popUpFadeOut 0.5s ease-in-out forwards",
+                animationDelay: "1.5s",
+              },
+              "& h1:nth-of-type(4)": {
+                animation: "popUpFadeOut 1.5s ease-in forwards",
+                animationDelay: "2s",
+              },
+            }}
+          >
+              <h1>WE</h1>
+              <h1>ARE</h1>
+              <h1>SOUTHERN</h1>
+              <h1>WIND</h1>
+            <style jsx global>{`
+              @keyframes popUpFadeOut {
+                0% {
+                  opacity: 0;
+                }
+                20% {
+                  opacity: 1;
+                }
+                80% {
+                  opacity: 1;
+                }
+                100% {
+                  opacity: 0;
+                }
+              }
+            `}</style>
+          </Box>
         </Box>
         {videoEnded && (
-          <div style={{transition: "opacity 1.5s ease-in"}}>
+          <div style={{ opacity: contentVisible ? 1 : 0 }}>
             <Box
               component="img"
               src="src/assets/logos/team-banner.jpg"
