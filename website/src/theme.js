@@ -13,6 +13,7 @@ const theme = createTheme({
       contrastText: "#FFFFFF",
     },
     secondary: {
+      dark: "B20000",
       main: "#E50000",
     },
   },
@@ -24,7 +25,7 @@ const theme = createTheme({
         },
       },
     },
-  }
+  },
 });
 
 export default theme;
