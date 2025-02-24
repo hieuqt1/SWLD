@@ -1,8 +1,6 @@
 import {
   AppBar,
-  Avatar,
   Box,
-  Button,
   IconButton,
   Toolbar,
   Typography,
@@ -12,19 +10,23 @@ export default function Footer() {
   const logos = [
     {
       key: "Southern Wind Lion Dance",
-      src: "src/assets/team-logo.png",
+      src: "src/assets/logos/team-logo.png",
+      href: "/"
     },
     {
       key: "USA Dragon & Lion Dance Sports Association",
-      src: "src/assets/association_icon.png",
+      src: "src/assets/logos/association_icon.png",
+      href: 'https://www.liondanceusa.com/'
     },
     {
       key: "Meta",
-      src: "src/assets/meta.svg",
+      src: "src/assets/logos/meta.svg",
+      href: 'https://www.facebook.com/southernwindliondance'
     },
     {
       key: "Instagram",
-      src: "src/assets/instagram.svg",
+      src: "src/assets/logos/instagram.svg",
+      href: 'https://www.instagram.com/gionamsouthernwind'
     },
   ];
   return (
@@ -42,7 +44,7 @@ export default function Footer() {
         >
           <Box display="flex" flexDirection="row" justifyContent="center" alignItems="center">
             {logos.map((logo) => (
-              <IconButton disableRipple>
+              <IconButton disableRipple href={logo.href}>
                 <Box
                   component="img"
                   src={logo.src}

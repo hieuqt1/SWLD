@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar
           sx={{
             paddingX: "2rem",
@@ -37,7 +37,7 @@ export default function Header() {
               <Button
                 startIcon={
                   <Avatar
-                    src={"src/assets/team-logo.png"}
+                    src={"src/assets/logos/team-logo.png"}
                     sx={{ width: 40, height: 40 }}
                   />
                 }
@@ -80,7 +80,7 @@ export default function Header() {
             <>
               <IconButton disableRipple>
                 <Avatar
-                  src={"src/assets/team-logo.png"}
+                  src={"src/assets/logos/team-logo.png"}
                   sx={{ width: 40, height: 40 }}
                 />
               </IconButton>

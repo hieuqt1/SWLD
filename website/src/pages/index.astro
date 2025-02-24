@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HomePage from '../ReactPages/HomePage';
 ---
 
 <Layout title="Gió Nam Múa Lân">
-	<h1>Home Page</h1>
+	<HomePage client:only="react" />
 </Layout>
