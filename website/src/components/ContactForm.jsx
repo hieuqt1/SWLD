@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { Box, Button, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  Grid2,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 
 export default function ContactForm() {
   const [formResponse, setFormResponse] = useState({
@@ -23,47 +32,74 @@ export default function ContactForm() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-      <InputLabel>Name:</InputLabel>
+    <Grid2 container spacing={2} alignItems={"center"}>
+      <Grid2 size={4} justifyItems={"end"}>
+        <InputLabel>Name:</InputLabel>
+      </Grid2>
+      <Grid2 size={8}>
         <TextField
           variant="outlined"
           name="name"
+          required
           value={formResponse.name}
           onChange={handleFormChange}
+          sx={{ width: "80%" }}
         />
-      </Box>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-      <InputLabel>Email:</InputLabel>
+      </Grid2>
+
+      <Grid2 size={4} justifyItems={"end"}>
+        <InputLabel>Email:</InputLabel>
+      </Grid2>
+      <Grid2 size={8}>
         <TextField
           variant="outlined"
           name="email"
+          required
           value={formResponse.email}
           onChange={handleFormChange}
+          sx={{ width: "80%" }}
         />
-      </Box>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      </Grid2>
+      <Grid2 size={4} justifyItems={"end"}>
         <InputLabel>Reason for Contact:</InputLabel>
+      </Grid2>
+      <Grid2 size={8}>
         <Select
           variant="outlined"
           name="contactReason"
+          required
           value={formResponse.contactReason}
           onChange={handleFormChange}
+          sx={{ width: "80%" }}
         >
           {contactReasons.map((reason) => (
             <MenuItem value={reason}>{reason}</MenuItem>
           ))}
         </Select>
-      </Box>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-      <InputLabel>Message:</InputLabel>
+      </Grid2>
+      <Grid2 size={4} justifyItems={"end"}>
+        <InputLabel>Message:</InputLabel>
+      </Grid2>
+      <Grid2 size={8}>
         <TextField
           variant="outlined"
           name="message"
+          required
+          multiline
           value={formResponse.message}
           onChange={handleFormChange}
+          sx={{
+            width: "80%",
+            // maxHeight: "8rem",
+            overflow: "scroll",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+            "-ms-overflow-style": "none" /* IE and Edge */,
+            "scrollbar-width": "none" /* Firefox */,
+          }}
         />
-      </Box>
+      </Grid2>
 
       <Button
         variant="contained"
@@ -81,6 +117,6 @@ export default function ContactForm() {
       >
         Submit
       </Button>
-    </div>
+    </Grid2>
   );
 }

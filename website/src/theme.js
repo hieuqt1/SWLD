@@ -25,6 +25,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#ffffff", // Set the color to white
+        },
+      },
+    },
   },
 });
 

@@ -5,7 +5,7 @@ import FrostedCard from "../components/FrostedCard";
 import ContactForm from "../components/ContactForm";
 
 export default function ContactPage() {
-  const collapsedView = useMediaQuery("(min-width:600px)");
+  const collapsedView = useMediaQuery("(min-width:768px)");
 
   return (
     <ThemeProvider theme={theme}>
