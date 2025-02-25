@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
+const styleTheme = createTheme({
   typography: {
     fontFamily: ["Public Sans", "serif"].join(","),
     fontFamilyHeader: ["Quicksand", "sans-serif"].join(","),
@@ -17,18 +17,44 @@ const theme = createTheme({
       main: "#E50000",
     },
   },
+});
+
+const theme = createTheme(styleTheme, {
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
           textTransform: "none",
+          borderRadius: '0.5rem'
         },
       },
     },
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: "#ffffff", // Set the color to white
+          color: styleTheme.palette.primary.contrastText, // Set the color to white
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          textAlign: "left",
+          backgroundColor: styleTheme.palette.primary.light, // Use the primary.light palette variable
+          color: '#454545',
+          "&.MuiOutlinedInput-root": {
+            borderRadius: '8px',
+            "&:hover": {
+              "& .MuiOutlinedInput-notchedOutline": {
+                transition: "ease-in-out 0.1s",
+              },
+            },
+            "&.Mui-focused": {
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: '#00000080',
+              },
+            },
+          },
         },
       },
     },

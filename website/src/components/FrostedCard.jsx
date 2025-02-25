@@ -15,7 +15,7 @@ export default function FrostedCard({ children, collapsedView }) {
         border: "1px solid rgba(255, 255, 255, 0.5)",
         borderRight: "1px solid rgba(255, 255, 255, 0.2)",
         borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
-        borderRadius: "10px",
+        borderRadius: "1rem",
         color: "primary.light",
         padding: "2rem",
         overflow: "scroll",
