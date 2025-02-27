@@ -32,7 +32,7 @@ export default function ContactForm() {
 
   const handleFormSubmit = () => {
     console.log("form response", formResponse);
-  }
+  };
 
   return (
     <form action={handleFormSubmit}>
@@ -49,7 +49,7 @@ export default function ContactForm() {
                 required
                 value={formResponse.name}
                 onChange={handleFormChange}
-                sx={{ width: "80%" }}
+                sx={{ width: "80%", }}
               />
             </Grid2>
             <Grid2 size={4} justifyItems={"end"}>
@@ -62,7 +62,10 @@ export default function ContactForm() {
                 required
                 value={formResponse.email}
                 onChange={handleFormChange}
-                sx={{ width: "80%" }}
+                sx={{
+                  width: "80%",
+                 
+                }}
               />
             </Grid2>
             <Grid2 size={4} justifyItems={"end"}>
@@ -78,7 +81,7 @@ export default function ContactForm() {
                 sx={{ width: "80%" }}
               >
                 {contactReasons.map((reason) => (
-                  <MenuItem value={reason} >{reason}</MenuItem>
+                  <MenuItem value={reason}>{reason}</MenuItem>
                 ))}
               </Select>
             </Grid2>
