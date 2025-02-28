@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Grid2,
@@ -18,6 +18,9 @@ export default function ContactForm() {
     message: "",
   });
 
+  const [submitted, setSubmitted] = useState(false);
+
+
   const contactReasons = [
     "Booking",
     "Join the Team",
@@ -30,166 +33,187 @@ export default function ContactForm() {
     setFormResponse({ ...formResponse, [name]: value });
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
+    try {
+      
+      const response = await fetch("/contactform", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formResponse),
+      });
+      if (response.ok) {
+        setSubmitted(true)
+      }
+      
+    } catch (error) {
+      console.error("Failed to fetch form data:", error);
+    }
     console.log("form response", formResponse);
   };
 
   return (
-    <form action={handleFormSubmit}>
-      <Grid2 container spacing={2} alignItems={"center"}>
-        {collapsedView ? (
-          <>
-            <Grid2 size={4} justifyItems={"end"}>
-              <InputLabel>Name:</InputLabel>
-            </Grid2>
-            <Grid2 size={8}>
-              <TextField
-                variant="outlined"
-                name="name"
-                required
-                value={formResponse.name}
-                onChange={handleFormChange}
-                sx={{ width: "80%", }}
-              />
-            </Grid2>
-            <Grid2 size={4} justifyItems={"end"}>
-              <InputLabel>Email:</InputLabel>
-            </Grid2>
-            <Grid2 size={8}>
-              <TextField
-                variant="outlined"
-                name="email"
-                required
-                value={formResponse.email}
-                onChange={handleFormChange}
-                sx={{
-                  width: "80%",
-                 
-                }}
-              />
-            </Grid2>
-            <Grid2 size={4} justifyItems={"end"}>
-              <InputLabel>Reason for Contact:</InputLabel>
-            </Grid2>
-            <Grid2 size={8}>
-              <Select
-                variant="outlined"
-                name="contactReason"
-                required
-                value={formResponse.contactReason}
-                onChange={handleFormChange}
-                sx={{ width: "80%" }}
-              >
-                {contactReasons.map((reason) => (
-                  <MenuItem value={reason}>{reason}</MenuItem>
-                ))}
-              </Select>
-            </Grid2>
-            <Grid2 size={4} justifyItems={"end"}>
-              <InputLabel>Message:</InputLabel>
-            </Grid2>
-            <Grid2 size={8}>
-              <TextField
-                variant="outlined"
-                name="message"
-                required
-                multiline
-                value={formResponse.message}
-                onChange={handleFormChange}
-                sx={{
-                  width: "80%",
-                  // maxHeight: "8rem",
-                  overflow: "scroll",
-                  "&::-webkit-scrollbar": {
-                    display: "none",
-                  },
-                  "-ms-overflow-style": "none" /* IE and Edge */,
-                  "scrollbar-width": "none" /* Firefox */,
-                }}
-              />
-            </Grid2>
-          </>
-        ) : (
-          <>
-            <Grid2 container size={12} spacing={1}>
-              <InputLabel sx={{ justifySelf: "start" }}>Name:</InputLabel>
-              <TextField
-                variant="outlined"
-                name="name"
-                required
-                value={formResponse.name}
-                onChange={handleFormChange}
-                sx={{ width: "100%" }}
-              />
-            </Grid2>
-            <Grid2 container size={12} spacing={1}>
-              <InputLabel sx={{ justifySelf: "start" }}>Email:</InputLabel>
-              <TextField
-                variant="outlined"
-                name="email"
-                required
-                value={formResponse.email}
-                onChange={handleFormChange}
-                sx={{ width: "100%" }}
-              />
-            </Grid2>
-            <Grid2 container size={12} spacing={1}>
-              <InputLabel sx={{ justifySelf: "start" }}>
-                Reason for Contact:
-              </InputLabel>
-              <Select
-                variant="outlined"
-                name="contactReason"
-                required
-                value={formResponse.contactReason}
-                onChange={handleFormChange}
-                sx={{ width: "100%" }}
-              >
-                {contactReasons.map((reason) => (
-                  <MenuItem value={reason}>{reason}</MenuItem>
-                ))}
-              </Select>
-            </Grid2>
-            <Grid2 container size={12} spacing={1}>
-              <InputLabel sx={{ justifySelf: "start" }}>Message:</InputLabel>
-              <TextField
-                variant="outlined"
-                name="message"
-                required
-                multiline
-                value={formResponse.message}
-                onChange={handleFormChange}
-                sx={{
-                  width: "100%",
-                  overflow: "scroll",
-                  "&::-webkit-scrollbar": {
-                    display: "none",
-                  },
-                  "-ms-overflow-style": "none" /* IE and Edge */,
-                  "scrollbar-width": "none" /* Firefox */,
-                }}
-              />
-            </Grid2>
-          </>
-        )}
+    <>
+      {!submitted ? (
+        <form action={handleFormSubmit}>
+          <Grid2 container spacing={2} alignItems={"center"}>
+            {collapsedView ? (
+              <>
+                <Grid2 size={4} justifyItems={"end"}>
+                  <InputLabel>Name:</InputLabel>
+                </Grid2>
+                <Grid2 size={8}>
+                  <TextField
+                    variant="outlined"
+                    name="name"
+                    // required
+                    value={formResponse.name}
+                    onChange={handleFormChange}
+                    sx={{ width: "80%" }}
+                  />
+                </Grid2>
+                <Grid2 size={4} justifyItems={"end"}>
+                  <InputLabel>Email:</InputLabel>
+                </Grid2>
+                <Grid2 size={8}>
+                  <TextField
+                    variant="outlined"
+                    name="email"
+                    // required
+                    value={formResponse.email}
+                    onChange={handleFormChange}
+                    sx={{
+                      width: "80%",
+                    }}
+                  />
+                </Grid2>
+                <Grid2 size={4} justifyItems={"end"}>
+                  <InputLabel>Reason for Contact:</InputLabel>
+                </Grid2>
+                <Grid2 size={8}>
+                  <Select
+                    variant="outlined"
+                    name="contactReason"
+                    // required
+                    value={formResponse.contactReason}
+                    onChange={handleFormChange}
+                    sx={{ width: "80%" }}
+                  >
+                    {contactReasons.map((reason) => (
+                      <MenuItem value={reason}>{reason}</MenuItem>
+                    ))}
+                  </Select>
+                </Grid2>
+                <Grid2 size={4} justifyItems={"end"}>
+                  <InputLabel>Message:</InputLabel>
+                </Grid2>
+                <Grid2 size={8}>
+                  <TextField
+                    variant="outlined"
+                    name="message"
+                    // required
+                    multiline
+                    value={formResponse.message}
+                    onChange={handleFormChange}
+                    sx={{
+                      width: "80%",
+                      // maxHeight: "8rem",
+                      overflow: "scroll",
+                      "&::-webkit-scrollbar": {
+                        display: "none",
+                      },
+                      "-ms-overflow-style": "none" /* IE and Edge */,
+                      "scrollbar-width": "none" /* Firefox */,
+                    }}
+                  />
+                </Grid2>
+              </>
+            ) : (
+              <>
+                <Grid2 container size={12} spacing={1}>
+                  <InputLabel sx={{ justifySelf: "start" }}>Name:</InputLabel>
+                  <TextField
+                    variant="outlined"
+                    name="name"
+                    // required
+                    value={formResponse.name}
+                    onChange={handleFormChange}
+                    sx={{ width: "100%" }}
+                  />
+                </Grid2>
+                <Grid2 container size={12} spacing={1}>
+                  <InputLabel sx={{ justifySelf: "start" }}>Email:</InputLabel>
+                  <TextField
+                    variant="outlined"
+                    name="email"
+                    // required
+                    value={formResponse.email}
+                    onChange={handleFormChange}
+                    sx={{ width: "100%" }}
+                  />
+                </Grid2>
+                <Grid2 container size={12} spacing={1}>
+                  <InputLabel sx={{ justifySelf: "start" }}>
+                    Reason for Contact:
+                  </InputLabel>
+                  <Select
+                    variant="outlined"
+                    name="contactReason"
+                    // required
+                    value={formResponse.contactReason}
+                    onChange={handleFormChange}
+                    sx={{ width: "100%" }}
+                  >
+                    {contactReasons.map((reason) => (
+                      <MenuItem value={reason}>{reason}</MenuItem>
+                    ))}
+                  </Select>
+                </Grid2>
+                <Grid2 container size={12} spacing={1}>
+                  <InputLabel sx={{ justifySelf: "start" }}>
+                    Message:
+                  </InputLabel>
+                  <TextField
+                    variant="outlined"
+                    name="message"
+                    // required
+                    multiline
+                    value={formResponse.message}
+                    onChange={handleFormChange}
+                    sx={{
+                      width: "100%",
+                      overflow: "scroll",
+                      "&::-webkit-scrollbar": {
+                        display: "none",
+                      },
+                      "-ms-overflow-style": "none" /* IE and Edge */,
+                      "scrollbar-width": "none" /* Firefox */,
+                    }}
+                  />
+                </Grid2>
+              </>
+            )}
 
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{
-            width: "100%",
-            "&:hover": {
-              backgroundColor: "#B20000",
-            },
-            transition: "ease-in-out 0.2s",
-          }}
-          type="submit"
-          disableRipple
-          disableElevation
-        >
-          Submit
-        </Button>
-      </Grid2>
-    </form>
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{
+                width: "100%",
+                "&:hover": {
+                  backgroundColor: "#B20000",
+                },
+                transition: "ease-in-out 0.2s",
+              }}
+              type="submit"
+              disableRipple
+              disableElevation
+            >
+              Submit
+            </Button>
+          </Grid2>
+        </form>
+      ) : (
+        <h1>Thank you for booking with us!</h1>
+      )}
+    </>
   );
 }
