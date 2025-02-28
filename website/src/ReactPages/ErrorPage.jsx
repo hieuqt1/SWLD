@@ -1,17 +1,10 @@
 import {
-  AppBar,
-  Avatar,
   Box,
   Button,
-  Container,
-  IconButton,
-  Toolbar,
   Typography,
 } from "@mui/material";
 
-// WANT IMAGE OF FALLEN DOWN LION
-
-export default function Error() {
+export default function ErrorPage() {
   return (
     <Box
       sx={{
