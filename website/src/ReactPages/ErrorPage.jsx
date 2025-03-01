@@ -16,12 +16,11 @@ export default function ErrorPage() {
         gap: 5,
         textAlign: "center",
         alignItems: "center",
-        backgroundImage: "url('src/assets/woah.jpeg')",
+        backgroundImage: "url('src/assets/off-duty.JPG')",
         backgroundColor: "rgba(255,255,255,0.3)",
         backgroundBlendMode: "lighten",
         backgroundSize: "cover",
-        backgroundPosition: "center top",
-        backgroundSize: "cover"
+        backgroundPosition: "center",
       }}
     >
       <Box>
