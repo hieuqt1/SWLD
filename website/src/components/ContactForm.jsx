@@ -19,7 +19,7 @@ export default function ContactForm() {
   });
 
   const [submitted, setSubmitted] = useState(false);
-
+  const [errors, setErrors] = useState({});
 
   const contactReasons = [
     "Booking",
@@ -31,20 +31,25 @@ export default function ContactForm() {
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormResponse({ ...formResponse, [name]: value });
+    value === ""
+      ? setErrors({ ...errors, [name]: true })
+      : setErrors({ ...errors, [name]: false });
   };
+
+  const isFormIncomplete = Object.values(formResponse).some(
+    (value) => value === ""
+  );
 
   const handleFormSubmit = async () => {
     try {
-      
       const response = await fetch("/contactform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formResponse),
       });
       if (response.ok) {
-        setSubmitted(true)
+        setSubmitted(true);
       }
-      
     } catch (error) {
       console.error("Failed to fetch form data:", error);
     }
@@ -55,7 +60,12 @@ export default function ContactForm() {
     <>
       {!submitted ? (
         <form action={handleFormSubmit}>
-          <Grid2 container spacing={2} alignItems={"center"}>
+          <Grid2
+            container
+            spacing={4}
+            alignItems={"center"}
+            sx={{ maxHeight: collapsedView ? "80vh" : "40vh" }}
+          >
             {collapsedView ? (
               <>
                 <Grid2 size={4} justifyItems={"end"}>
@@ -65,12 +75,14 @@ export default function ContactForm() {
                   <TextField
                     variant="outlined"
                     name="name"
-                    // required
+                    required
+                    error={errors.name}
                     value={formResponse.name}
                     onChange={handleFormChange}
                     sx={{ width: "80%" }}
                   />
                 </Grid2>
+
                 <Grid2 size={4} justifyItems={"end"}>
                   <InputLabel>Email:</InputLabel>
                 </Grid2>
@@ -78,7 +90,8 @@ export default function ContactForm() {
                   <TextField
                     variant="outlined"
                     name="email"
-                    // required
+                    required
+                    error={errors.email}
                     value={formResponse.email}
                     onChange={handleFormChange}
                     sx={{
@@ -93,7 +106,8 @@ export default function ContactForm() {
                   <Select
                     variant="outlined"
                     name="contactReason"
-                    // required
+                    required
+                    error={errors.contactReason}
                     value={formResponse.contactReason}
                     onChange={handleFormChange}
                     sx={{ width: "80%" }}
@@ -110,8 +124,9 @@ export default function ContactForm() {
                   <TextField
                     variant="outlined"
                     name="message"
-                    // required
                     multiline
+                    required
+                    error={errors.message}
                     value={formResponse.message}
                     onChange={handleFormChange}
                     sx={{
@@ -134,7 +149,8 @@ export default function ContactForm() {
                   <TextField
                     variant="outlined"
                     name="name"
-                    // required
+                    required
+                    error={errors.name}
                     value={formResponse.name}
                     onChange={handleFormChange}
                     sx={{ width: "100%" }}
@@ -145,7 +161,8 @@ export default function ContactForm() {
                   <TextField
                     variant="outlined"
                     name="email"
-                    // required
+                    required
+                    error={errors.email}
                     value={formResponse.email}
                     onChange={handleFormChange}
                     sx={{ width: "100%" }}
@@ -158,7 +175,8 @@ export default function ContactForm() {
                   <Select
                     variant="outlined"
                     name="contactReason"
-                    // required
+                    required
+                    error={errors.contactReason}
                     value={formResponse.contactReason}
                     onChange={handleFormChange}
                     sx={{ width: "100%" }}
@@ -175,7 +193,8 @@ export default function ContactForm() {
                   <TextField
                     variant="outlined"
                     name="message"
-                    // required
+                    required
+                    error={errors.message}
                     multiline
                     value={formResponse.message}
                     onChange={handleFormChange}
@@ -198,6 +217,9 @@ export default function ContactForm() {
               color="secondary"
               sx={{
                 width: "100%",
+                // backgroundColor: "primary.contrastText",
+                // color: "secondary.main",
+                position: "relative",
                 "&:hover": {
                   backgroundColor: "#B20000",
                 },
@@ -206,13 +228,16 @@ export default function ContactForm() {
               type="submit"
               disableRipple
               disableElevation
+              disabled={isFormIncomplete}
             >
               Submit
             </Button>
           </Grid2>
         </form>
       ) : (
-        <h1>Thank you for booking with us!</h1>
+        <Box sx={{ maxHeight: collapsedView ? "80vh" : "40vh" }}>
+          <h1>Thank you for booking with us!</h1>
+        </Box>
       )}
     </>
   );

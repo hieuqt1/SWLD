@@ -16,6 +16,9 @@ const styleTheme = createTheme({
       dark: "#B20000",
       main: "#E50000",
     },
+    error: {
+      main: "#E50000"
+    }
   },
 });
 
@@ -47,6 +50,7 @@ const theme = createTheme(styleTheme, {
             "&:hover": {
               "& .MuiOutlinedInput-notchedOutline": {
                 transition: "ease-in-out 0.1s",
+                borderColor: '#00000080',
               },
             },
             "&.Mui-focused": {
@@ -54,6 +58,16 @@ const theme = createTheme(styleTheme, {
                 borderColor: '#00000080',
               },
             },
+            "&.Mui-error": {
+              "&.Mui-focused": {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: styleTheme.palette.error.main,
+                },
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderWidth: '2px',
+              },
+            }
           },
         },
       },
