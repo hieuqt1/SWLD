@@ -119,6 +119,15 @@ export default function ContactForm() {
                 </Grid2>
                 <Grid2 size={4} justifyItems={"end"}>
                   <InputLabel>Message:</InputLabel>
+                  <InputLabel
+                    sx={{
+                      textWrap: "wrap",
+                      fontSize: "0.75rem",
+                      textAlign: "right",
+                    }}
+                  >
+                    For bookings, please provide details such as date, time, location, and occasion.
+                  </InputLabel>
                 </Grid2>
                 <Grid2 size={8}>
                   <TextField
@@ -189,6 +198,15 @@ export default function ContactForm() {
                 <Grid2 container size={12} spacing={1}>
                   <InputLabel sx={{ justifySelf: "start" }}>
                     Message:
+                  </InputLabel>
+                  <InputLabel
+                    sx={{
+                      textWrap: "wrap",
+                      fontSize: "0.75rem",
+                      textAlign: "left",
+                    }}
+                  >
+                    For bookings, please provide details such as date, time, location, and occasion.
                   </InputLabel>
                   <TextField
                     variant="outlined"
