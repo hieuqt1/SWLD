@@ -20,6 +20,8 @@ export default function ErrorPage() {
         backgroundColor: "rgba(255,255,255,0.3)",
         backgroundBlendMode: "lighten",
         backgroundSize: "cover",
+        backgroundPosition: "center top",
+        backgroundSize: "cover"
       }}
     >
       <Box>
