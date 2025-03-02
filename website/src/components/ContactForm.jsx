@@ -64,7 +64,6 @@ export default function ContactForm() {
             container
             spacing={4}
             alignItems={"center"}
-            sx={{ maxHeight: collapsedView ? "80vh" : "40vh" }}
           >
             {collapsedView ? (
               <>

@@ -1,4 +1,4 @@
-import { Box, Button, ThemeProvider } from "@mui/material";
+import { Box, ThemeProvider } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../theme";
 import FrostedCard from "../components/FrostedCard";
@@ -6,7 +6,6 @@ import ContactForm from "../components/ContactForm";
 
 export default function ContactPage() {
   const collapsedView = useMediaQuery("(min-width:1200px)");
-  
 
   return (
     <ThemeProvider theme={theme}>
@@ -33,7 +32,7 @@ export default function ContactPage() {
             padding: "2rem",
             width: "100%",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "stretch",
             gap: "2rem",
           }}
         >
@@ -43,10 +42,11 @@ export default function ContactPage() {
             >
               Celebrate with us!
             </h1>
+            
             <p>
               To schedule a performance, join our team, or inquire about
-              anything else, contact us here, email us at booking@gionam.org, or reach out to one of our
-              coordinators below.
+              anything else, contact us here, email us at booking@gionam.org, or
+              reach out to one of our coordinators below.
             </p>
             <p>
               For performance requests, please contact us at least two weeks in
@@ -54,6 +54,7 @@ export default function ContactPage() {
               three weeks ahead.
             </p>
             <p>We look forward to hearing from you!</p>
+           
           </FrostedCard>
 
           <FrostedCard collapsedView={collapsedView}>

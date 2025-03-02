@@ -9,7 +9,7 @@ export default function FrostedCard({ children, collapsedView }) {
         alignItems: "center",
         textAlign: "center",
         width: collapsedView ? "40%" : "100%",
-        maxHeight : collapsedView ? "80vh" : "30vh",
+        maxHeight: collapsedView ? "80vh" : "30vh",
         background: "rgba(255, 255, 255, 0.25)",
         backdropFilter: "blur(25px)",
         border: "1px solid rgba(255, 255, 255, 0.5)",
@@ -22,8 +22,8 @@ export default function FrostedCard({ children, collapsedView }) {
         "&::-webkit-scrollbar": {
           display: "none",
         },
-        "-ms-overflow-style": "none", /* IE and Edge */
-        "scrollbar-width": "none", /* Firefox */
+        "-ms-overflow-style": "none" /* IE and Edge */,
+        "scrollbar-width": "none" /* Firefox */,
       }}
     >
       {children}
