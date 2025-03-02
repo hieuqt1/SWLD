@@ -16,6 +16,7 @@ export default function Header() {
   const pages = [
     { title: "Home", href: "/" },
     { title: "About", href: "/about" },
+    { title: "Media", href: "/media" },
     { title: "Contact", href: "/contact" },
   ];
   const collapsedView = useMediaQuery("(min-width:600px)");
