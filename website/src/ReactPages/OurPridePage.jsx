@@ -1,10 +1,11 @@
 import { ThemeProvider } from "@emotion/react";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid2, Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../theme";
+import LionCard from "../components/LionCard";
 
 export default function OurPridePage() {
-    const collapsedView = useMediaQuery("(min-width:480px)");
+  const collapsedView = useMediaQuery("(min-width:480px)");
 
   return (
     <ThemeProvider theme={theme}>
@@ -26,7 +27,7 @@ export default function OurPridePage() {
             position: "relative",
             width: "90%",
             maxHeight: collapsedView ? "40vh" : "20vh",
-            aspectRatio: '2.35/1',
+            aspectRatio: "2.35/1",
             backgroundImage: "url(/src/assets/lion-lineup-6.png)",
             backgroundPosition: "center",
             backgroundSize: "cover",
@@ -66,19 +67,33 @@ export default function OurPridePage() {
           sx={{
             width: "100%",
             display: "flex",
+            flexDirection: 'column',
             justifyContent: "center",
-            backgroundColor: "pink",
             paddingY: "2rem",
-            paddingX: collapsedView ? "8rem" : "2rem"
+            paddingX: collapsedView ? "8rem" : "2rem",
+            gap: "2rem",
           }}
         >
-          
-            <Typography>
-              Our lions are handmade by skilled craftsmen worldwide using
-              bamboo, rattan, and papier-mâché. Feel free to request specific
-              colors or styles, or contact us for expert recommendations.
-            </Typography>
-          </Box>
+          <Typography sx={{color: "#0000008F"}}>
+            Our lions are handmade by skilled craftsmen worldwide using bamboo,
+            rattan, and papier-mâché. Feel free to request specific colors or
+            styles, or contact us for expert recommendations.
+          </Typography>
+          <Grid2 container spacing={6} sx={{width: '100%'}}>
+            <Grid2 size={{xs: 3}} >
+              <LionCard />
+            </Grid2>
+            <Grid2 size={{xs: 3}} >
+              <LionCard />
+            </Grid2>
+            <Grid2 size={{xs: 3}} >
+              <LionCard />
+            </Grid2>
+            <Grid2 size={{xs: 3}} >
+              <LionCard />
+            </Grid2>
+          </Grid2>
+        </Box>
       </Box>
     </ThemeProvider>
   );
