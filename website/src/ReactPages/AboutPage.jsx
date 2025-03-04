@@ -57,22 +57,23 @@ export default function AboutPage() {
           <Box
             component="div"
             sx={{
-              height: 150,
-              width: 500,
-              backgroundColor: "secondary.main",
+              height: 350,
+              width: 350,
+              // backgroundColor: "secondary.main",
+              backgroundColor: "rgba(255,0,0,0.6)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               textAlign: "center",
-              border: "5px solid black",
+              border: "4px solid rgba(0,0,0,.6)",
               padding: 10
             }}
           >
             <Typography
-              fontSize={30}
-              fontWeight={300}
+              fontSize={38}
+              fontWeight={600}
               sx={{
-                color: "white",
+                color: "black",
                 fontStyle: "italic"
               }}
             >
@@ -113,7 +114,7 @@ export default function AboutPage() {
 
             <Box
               sx={{
-                backgroundColor: "beige",
+                backgroundColor: "indianred",
                 padding: 10,
                 paddingTop: 2,
                 marginTop: 5,
@@ -173,7 +174,7 @@ export default function AboutPage() {
                     />
                     <CardContent>
                       <Typography fontSize={25} fontWeight={600}>
-                        BONDS
+                        DISCIPLINE
                       </Typography>
                       <Typography>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis reiciendis, perspiciatis voluptas hic saepe provident, quis sit sequi corporis sunt earum. Sit quos cum nulla officiis. Quae, repudiandae dolore!
