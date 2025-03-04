@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Arcturus",
+    "type": ["LED", "wedding", "grand opening"],
+    "images": ["/src/assets/lions/arcturus/arcturus-1.JPG", "/src/assets/lions/arcturus/arcturus-2.JPG"]
+  },
+  {
+    "name": "Aurum",
+    "type": ["LED", "wedding", "grand opening"],
+    "images": ["/src/assets/lions/aurum/aurum-1.jpg"]
+  },
+  {
+    "name": "Blossom",
+    "type": ["LED", "wedding", "grand opening"],
+    "images": ["/src/assets/lions/blossom/blossom-1.jpg", "/src/assets/lions/blossom/blossom-2.jpg"]
+  },
+  {
+    "name": "Crow",
+    "type": ["LED", "wedding", "grand opening"],
+    "images": ["/src/assets/lions/crow/crow-1.jpg", "/src/assets/lions/crow/crow-1.jpg"]
+  },
+  {
+    "name": "Monsoon",
+    "type": ["LED", "wedding", "grand opening"],
+    "images": ["/src/assets/lions/monsoon/monsoon-1.jpg", "/src/assets/lions/monsoon/monsoon-2.jpg"]
+  },
+  {
+    "name": "Nocturne",
+    "type": ["LED", "grand opening"],
+    "images": ["/src/assets/lions/nocturne/nocturne-1.JPG"]
+  },
+  {
+    "name": "Pyro",
+    "type": ["wedding", "grand opening"],
+    "images": ["/src/assets/lions/pyro/pyro-1.JPG"]
+  },
+  {
+    "name": "Ruby",
+    "type": ["LED", "wedding", "grand opening"],
+    "images": ["/src/assets/lions/ruby/ruby-1.JPG", "/src/assets/lions/ruby/ruby-2.jpg"]
+  },
+  {
+    "name": "Stardust",
+    "type": ["LED", "wedding", "grand opening"],
+    "images": ["/src/assets/lions/stardust/stardust-2.JPG"]
+  },
+  {
+    "name": "Thunder",
+    "type": ["LED"],
+    "images": ["/src/assets/lions/thunder/thunder-1.jpg"]
+  }
+]

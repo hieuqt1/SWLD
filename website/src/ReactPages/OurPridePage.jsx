@@ -3,6 +3,7 @@ import { Box, Grid2, Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../theme";
 import LionCard from "../components/LionCard";
+import lions from "../data/lions.json";
 
 export default function OurPridePage() {
   const collapsedView = useMediaQuery("(min-width:480px)");
@@ -67,31 +68,31 @@ export default function OurPridePage() {
           sx={{
             width: "100%",
             display: "flex",
-            flexDirection: 'column',
+            flexDirection: "column",
             justifyContent: "center",
             paddingY: "2rem",
             paddingX: collapsedView ? "8rem" : "2rem",
             gap: "2rem",
           }}
         >
-          <Typography sx={{color: "#0000008F"}}>
+          <Typography sx={{ color: "#0000008F" }}>
             Our lions are handmade by skilled craftsmen worldwide using bamboo,
             rattan, and papier-mâché. Feel free to request specific colors or
             styles, or contact us for expert recommendations.
           </Typography>
-          <Grid2 container spacing={6} sx={{width: '100%'}}>
-            <Grid2 size={{xs: 3}} >
-              <LionCard />
-            </Grid2>
-            <Grid2 size={{xs: 3}} >
-              <LionCard />
-            </Grid2>
-            <Grid2 size={{xs: 3}} >
-              <LionCard />
-            </Grid2>
-            <Grid2 size={{xs: 3}} >
-              <LionCard />
-            </Grid2>
+          <Grid2
+            container
+            spacing={6}
+            sx={{ width: "100%" }}
+            alignItems="stretch"
+          >
+            {lions.map((lion) => {
+              return (
+                <Grid2 size={{ xs: 12, md: 6, lg: 4, xl: 3 }}>
+                  <LionCard lion={lion} />
+                </Grid2>
+              );
+            })}
           </Grid2>
         </Box>
       </Box>
