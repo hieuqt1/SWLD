@@ -59,7 +59,7 @@ export default function CommonPageLayout({ children, title, image }) {
               variant="h1"
               fontFamily="fontFamilyHeader"
               fontWeight="500"
-              fontSize= 'clamp(4rem, 2.9362rem + 4.539vw, 6rem);'        
+              fontSize='clamp(3rem, 1.4043rem + 6.8085vw, 6rem);'    
             >
               {title}
             </Typography>
