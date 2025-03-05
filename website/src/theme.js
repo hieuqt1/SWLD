@@ -8,16 +8,20 @@ const styleTheme = createTheme({
   },
   palette: {
     primary: {
-      main: "#000000",
+      dark: '#000000',
+      main: "#1D1D1F", // black
       light: "#FFFFFFDE",
       contrastText: "#FFFFFF",
     },
     secondary: {
       dark: "#B20000",
-      main: "#E50000",
+      main: "#E50000", // red
+      light: "#FFBFBF"
     },
-    error: {
-      main: "#E50000"
+    gold: {
+      dark: '#B28500',
+      main: '#E5AC00', // gold
+      light: '#FFEFBF'
     }
   },
 });
