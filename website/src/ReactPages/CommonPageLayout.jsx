@@ -51,6 +51,8 @@ export default function CommonPageLayout({ children, title, image }) {
               left: "50%",
               transform: "translate(-50%, -50%)",
               color: "white",
+              width: '100%',
+              textAlign: 'center'
             }}
           >
             <Typography
