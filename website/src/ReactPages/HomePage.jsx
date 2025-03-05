@@ -95,15 +95,11 @@ export default function HomePage() {
             <Button
               variant="contained"
               href="/contact"
+              color='secondary'
               disableRipple
               disableElevation
               sx={{
-                width: "100%",
-                backgroundColor: "secondary.main",
-                "&:hover": {
-                  backgroundColor: "#B20000",
-                },
-                transition: "ease-in-out 0.2s",
+                width: "100%"
               }}
             >
               Book Now
