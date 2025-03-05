@@ -3,7 +3,7 @@ import { Box, Button, ThemeProvider } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageCarousel from "../components/ImageCarousel";
 import theme from "../theme";
-import sample from "../assets/sample.mp4";
+import intro from "../assets/intro.mp4";
 
 export default function HomePage() {
   const collapsedView = useMediaQuery("(min-width:600px)");
@@ -62,7 +62,7 @@ export default function HomePage() {
           }}
         >
           <video
-            src={sample}
+            src={intro}
             autoPlay
             muted
             style={{
