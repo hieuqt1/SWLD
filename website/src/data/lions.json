@@ -36,7 +36,7 @@
   },
   {
     "name": "Pyrite",
-    "type": ["grand opening"],
+    "type": ["LED", "grand opening"],
     "images": ["/src/assets/lions/pyrite/pyrite-1.JPG"]
   },
   {
