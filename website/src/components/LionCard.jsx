@@ -1,14 +1,36 @@
-import {
-  Box,
-  Card,
-  CardHeader,
-  CardMedia,
-  Chip,
-} from "@mui/material";
+import { useEffect, useRef, useState } from "react";
+import { Box, Card, CardHeader, CardMedia, Chip } from "@mui/material";
 
 export default function LionCard({ lion }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the card is visible
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) observer.unobserve(cardRef.current);
+    };
+  }, []);
+
   return (
     <Card
+      ref={cardRef}
+      onMouseOver={() => setIsHovered(true)} // Triggered when mouse enters
+      onMouseLeave={() => setIsHovered(false)} // Triggered when mouse leaves
       sx={{
         width: "100%",
         height: "100%",
@@ -16,12 +38,18 @@ export default function LionCard({ lion }) {
         backgroundColor: "white",
         padding: "1.5rem",
         borderRadius: "1rem",
-        transition: 'transform 0.1s ease-in-out',
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(20px)",
+        transition: isHovered
+          ? "transform 0.1s ease-in-out" // animation length when hovered
+          : "opacity 0.6s ease-out, transform 0.6s ease-out", // will be default animation length when not hovered
         "&:hover": {
-            transform: 'scale(1.05) '
-        }
+          transform: "scale(1.05)", 
+          transition: "transform 0.1s ease-in-out", 
+        },
       }}
     >
+
       <CardMedia
         component="img"
         height="auto"
